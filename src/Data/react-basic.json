@@ -1,0 +1,16 @@
+{
+  "id": "react-basics",
+  "title": "React Essentials",
+  "lessons": [
+    {
+      "id": "intro",
+      "title": "Introduction to React",
+      "content": "Welcome to React! In this module we learn about components..."
+    },
+    {
+      "id": "state-hooks",
+      "title": "Understanding useState",
+      "content": "State allows components to retain data across renders..."
+    }
+  ]
+}
