@@ -1,0 +1,1 @@
+var e=`react-basics`,t=`React Essentials`,n=[{id:`intro`,title:`Introduction to React`,content:`Welcome to React! In this module we learn about components...`},{id:`state-hooks`,title:`Understanding useState`,content:`State allows components to retain data across renders...`}],r={id:e,title:t,lessons:n};export{r as default,e as id,n as lessons,t as title};
