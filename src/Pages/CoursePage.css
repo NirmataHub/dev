@@ -1,0 +1,64 @@
+:root {
+  --course-panel: #0b0e2d;
+  --course-panel-raised: #11153a;
+  --course-border: rgba(0, 240, 255, 0.18);
+  --course-accent: #00f0ff;
+  --course-text: #e2e8f0;
+  --course-muted: #93a0b8;
+  --course-radius: 14px;
+}
+
+.course-viewer-layout {
+  --mx: -9999px; --my: -9999px; --course-grid-hsl: 210 100% 60%; --course-grid-alpha: 0.5; --course-grid-fade: 250px;
+  display: flex; height: 100vh; overflow: hidden; position: relative; isolation: isolate;
+  background: #05061e; color: var(--course-text); font-family: 'Inter', system-ui, sans-serif;
+}
+.course-viewer-layout::before, .course-viewer-layout::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; background-size: 40px 40px; }
+.course-viewer-layout::before { background-image: linear-gradient(to right, rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.025) 1px, transparent 1px); }
+.course-viewer-layout::after { background-image: linear-gradient(to right, hsl(var(--course-grid-hsl) / var(--course-grid-alpha)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--course-grid-hsl) / var(--course-grid-alpha)) 1px, transparent 1px); mask-image: radial-gradient(circle var(--course-grid-fade) at var(--mx) var(--my), #000 0%, transparent 100%); -webkit-mask-image: radial-gradient(circle var(--course-grid-fade) at var(--mx) var(--my), #000 0%, transparent 100%); }
+
+.course-content-pane { flex: 1; min-width: 0; height: 100vh; overflow: hidden; padding: clamp(16px, 2vw, 28px); position: relative; z-index: 1; }
+.workspace-container { width: 100%; height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: clamp(14px, 1.8vw, 24px); }
+.mobile-header-bar, .legacy-workspace { display: none; }
+
+/* 16:9 media workspace */
+.top-workspace-section { width: 100%; max-width: 1000px; margin: 0 auto; aspect-ratio: 16 / 9; max-height: 462px; min-height: 0; display: flex; flex-direction: column; }
+.media-tabs { display: flex; align-items: end; gap: 5px; padding-left: 10px; position: relative; z-index: 1; }
+.media-tab { border: 1px solid var(--course-border); border-bottom: 0; border-radius: 10px 10px 0 0; padding: 8px 17px 9px; background: rgba(11,14,45,.75); color: var(--course-muted); font: 600 .78rem/1 'Space Grotesk', 'Inter', system-ui, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; transition: color .2s, background-color .2s, transform .2s; }
+.media-tab:hover, .media-tab:focus-visible { color: var(--course-accent); background: rgba(0,240,255,.08); outline: none; }
+.media-tab.active { color: var(--course-accent); background: var(--course-panel-raised); transform: translateY(1px); }
+.media-panel { min-height: 0; flex: 1; display: grid; place-items: center; overflow: hidden; background: var(--course-panel-raised); border: 1px solid var(--course-border); border-radius: var(--course-radius); border-top-left-radius: 4px; box-shadow: 0 14px 35px rgba(0,0,0,.2); }
+.diagram-viewer, .lesson-video, .editor-placeholder { width: 100%; height: 100%; }
+.diagram-viewer { display: grid; place-items: center; position: relative; overflow: hidden; }
+.diagram-image { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lesson-video { border: 0; }
+.editor-placeholder { background: linear-gradient(135deg, rgba(0,240,255,.025), transparent 45%); }
+.media-empty-state { margin: 0; color: var(--course-muted); font-size: .95rem; }
+.carousel-btn { position: absolute; top: 50%; width: 38px; height: 38px; border: 1px solid var(--course-border); border-radius: 50%; background: rgba(5,6,30,.78); color: var(--course-text); font-size: 1.8rem; line-height: 1; cursor: pointer; transform: translateY(-50%); }
+.carousel-btn:hover, .carousel-btn:focus-visible { color: #001417; background: var(--course-accent); outline: none; }
+.prev-btn { left: 14px; } .next-btn { right: 14px; }
+.carousel-indicator { position: absolute; bottom: 12px; padding: 4px 9px; border-radius: 99px; background: rgba(5,6,30,.72); color: var(--course-text); font-size: .75rem; }
+
+/* Scrollable lesson panel */
+.content-scroll-section { min-height: 0; max-width: 1000px; width: 100%; margin: 0 auto; overflow-y: auto; padding: clamp(20px, 3vw, 38px); border: 1px solid var(--course-border); border-radius: var(--course-radius); background: var(--course-panel); box-shadow: 0 14px 35px rgba(0,0,0,.2); scrollbar-width: thin; scrollbar-color: rgba(0,240,255,.55) rgba(255,255,255,.05); }
+.content-scroll-section::-webkit-scrollbar { width: 8px; }
+.content-scroll-section::-webkit-scrollbar-track { margin: 10px; background: rgba(255,255,255,.05); border-radius: 99px; }
+.content-scroll-section::-webkit-scrollbar-thumb { background: linear-gradient(#00f0ff, #5b7cff); border-radius: 99px; }
+.content-scroll-section h1 { margin: 0 0 22px; color: #fff; font-size: clamp(1.55rem, 2.4vw, 2.2rem); }
+.lesson-text-body { color: var(--course-text); }
+.lesson-rich-block { line-height: 1.7; }
+.lesson-rich-block > p, .lesson-rich-block > h3, .lesson-rich-block > h4, .lesson-rich-block > img { margin: 0 0 16px; }
+.lesson-rich-block h3 { color: #75b7ff; font-size: 1.28rem; line-height: 1.35; }
+.lesson-rich-block h4 { color: var(--course-accent); font-size: 1.08rem; }
+.lesson-rich-block span { color: #75b7ff; font-weight: 700; }
+.lesson-rich-block b, .lesson-rich-block strong { color: #fff; font-weight: 700; }
+.lesson-rich-block mark { padding: 1px 5px; border-radius: 4px; background: rgba(0, 240, 255, 0.16); color: #dffcff; }
+.lesson-rich-block a { color: var(--course-accent); text-underline-offset: 3px; }
+.lesson-rich-block img { display: block; max-width: 100%; height: auto; border: 1px solid var(--course-border); border-radius: 10px; }
+.meta-block { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--course-border); } .meta-block h3 { margin-bottom: 10px; }
+.tags-flex { display: flex; flex-wrap: wrap; gap: 8px; } .code-tag { padding: 4px 10px; border: 1px solid var(--course-border); border-radius: 6px; color: var(--course-accent); font-family: monospace; font-size: .85rem; }
+
+@media (max-width: 768px) {
+  .course-content-pane { height: 100vh; margin-left: 76px; padding: 14px; } .workspace-container { grid-template-rows: auto minmax(0, 1fr); gap: 14px; }
+  .media-tab { padding: 7px 11px 8px; font-size: .7rem; }
+}

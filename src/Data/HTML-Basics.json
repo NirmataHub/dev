@@ -5,13 +5,33 @@
     {
       "id": "intro-html",
       "title": "Intro HTML",
-      "paragraphs": [
-        "Welcome to HTML Basics! HTML (HyperText Markup Language) is the standard markup language for documents designed to be displayed in a web browser."
-      ],
+
       "subLessons": [
+        {
+          "id": "Intro HTML",
+          "title": "Intro to HTML",
+          "video": "https://www.youtube.com/embed/T51yeydeRmQ",
+          "diagrams": ["/Thumbnails/1.webp", "/Thumbnails/2.webp", "/Thumbnails/3.webp"],
+          "paragraphs": [
+            "<h3>Welcome to HTML Basics</h3>",
+            "<p>Every <b>website</b> begins with <span>HTML</span>: the structure that gives a browser meaningful content to render.</p>",
+            "<p>Think of it as the frame of a house. <mark>CSS makes that frame beautiful</mark>, while JavaScript can make it interactive. Think of it as the frame of a house. <mark>CSS makes that frame beautiful</mark>, while JavaScript can make it interactive.Think of it as the frame of a house. <mark>CSS makes that frame beautiful</mark>, while JavaScript can make it interactive.Think of it as the frame of a house. <mark>CSS makes that frame beautiful</mark>, while JavaScript can make it interactive.Think of it as the frame of a house. <mark>CSS makes that frame beautiful</mark>, while JavaScript can make it interactive.</p>",
+            "<h4>Your first building blocks</h4>",
+            "<p>Elements use tags, such as <b>&lt;h1&gt;</b> for a primary heading and <b>&lt;p&gt;</b> for a paragraph. Most elements have an opening and closing tag.</p>",
+            "<p>When you are ready, explore the <a href=\"https://developer.mozilla.org/en-US/docs/Web/HTML\" target=\"_blank\" rel=\"noreferrer\">MDN HTML reference</a> for every available element.</p>",
+            "<img src=\"/Thumbnails/x.webp\" alt=\"Abstract HTML lesson illustration\" />",
+            "<p><strong>Next up:</strong> you will create a complete document using the <span>html</span>, <span>head</span>, and <span>body</span> elements.</p>"
+          ],
+          "initialCode": {
+            "html": "<main class=\"welcome\"><h1>Hello There!</h1></main>",
+            "css": ".welcome { color: cyan; }"
+          }
+          },
         {
           "id": "utilities-resources",
           "title": "Utilities & Resources",
+          "video": "",
+          "diagrams": "",
           "paragraphs": [
             "Essential tools and documentation to get started with HTML development effectively."
           ]
@@ -45,6 +65,10 @@
           "paragraphs": [
             "Contains metadata, document title, styles, and external resource links."
           ]
+          ,
+          "initialCode": {
+            "html": "<main class=\"welcome\"><h1>Hello There!</h1></main>"
+          }
         },
         {
           "id": "body",
@@ -93,6 +117,10 @@
             "Used to link external stylesheets and icons.",
             "Note: Point out the distinction between the link tag and the anchor (a) tag."
           ]
+          ,
+          "initialCode": {
+            "css": ".welcome { color: cyan; }"
+          }
         },
         {
           "id": "meta-tag",

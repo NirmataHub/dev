@@ -1,0 +1,111 @@
+.course-editor {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  background: rgba(0, 240, 255, 0.22);
+}
+
+.editor-pane,
+.preview-pane {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  background: #07142d;
+}
+
+.editor-toolbar,
+.preview-toolbar {
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  border-bottom: 1px solid rgba(0, 240, 255, 0.14);
+  color: #9eabc4;
+  font: 600 0.75rem/1 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.preview-pane.has-syntax-error {
+  box-shadow: inset 0 0 0 2px #ff4d67;
+}
+
+.preview-pane.has-syntax-error .preview-toolbar {
+  color: #ff8a9b;
+  border-bottom-color: rgba(255, 77, 103, 0.55);
+}
+
+.syntax-error-message {
+  margin-left: auto;
+  color: #ff8a9b;
+  font-size: 0.68rem;
+}
+
+.editor-toolbar {
+  justify-content: space-between;
+}
+
+.editor-file-tabs {
+  align-self: stretch;
+  display: flex;
+  align-items: stretch;
+  margin-left: -13px;
+}
+
+.editor-file-tab {
+  border: 0;
+  border-right: 1px solid rgba(0, 240, 255, 0.14);
+  border-bottom: 2px solid transparent;
+  padding: 0 13px;
+  background: transparent;
+  color: #7182a3;
+  font: inherit;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.editor-file-tab.active {
+  border-bottom-color: #00f0ff;
+  color: #d8e6ff;
+  background: rgba(0, 240, 255, 0.06);
+}
+
+.run-code-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  border-radius: 6px;
+  padding: 6px 10px;
+  background: rgba(0, 240, 255, 0.08);
+  color: #00f0ff;
+  font: inherit;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.run-code-btn:hover,
+.run-code-btn:focus-visible {
+  background: rgba(0, 240, 255, 0.17);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+  outline: none;
+}
+
+.monaco-editor-frame,
+.code-preview {
+  flex: 1;
+  min-height: 0;
+}
+
+.code-preview {
+  width: 100%;
+  border: 0;
+  background: #06142b;
+}
+

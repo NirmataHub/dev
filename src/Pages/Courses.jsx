@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import TopMenu from './../Components/TopMenu';
-import './Courses.css';
+import TopMenu from '../Components/TopMenu';
+import Footer from '../Components/Footer'
+import './Courses.css'
 
 const coursesData = [
   { 
@@ -42,33 +44,52 @@ const coursesData = [
 ];
 
 export default function Courses() {
+  const gridRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!gridRef.current) return;
+
+    gridRef.current.style.setProperty('--mx', `${e.clientX}px`);
+    gridRef.current.style.setProperty('--my', `${e.clientY}px`);
+  };
+
+  const handleMouseLeave = () => {
+    if (!gridRef.current) return;
+
+    gridRef.current.style.setProperty('--mx', '-9999px');
+    gridRef.current.style.setProperty('--my', '-9999px');
+  };
+
   return (
-    <div className="courses-page">
-      <TopMenu />
-
-      <main className="courses-container">
-        <h1 className="courses-heading">Available Courses</h1>
-        
-        <div className="courses-grid">
-          {coursesData.map((course) => (
-            <Link to={`/courses/${course.id}`} key={course.id} className="course-card-wrapper">
-              <div className="isometric-card">
-                {/* 3D Stacked Layers */}
-                <div className="layer layer-bottom" />
-                <div className="layer layer-middle" />
-                <div className="layer layer-top">
-                  <img src={course.icon} alt={course.title} className="card-icon" />
+    <section
+      ref={gridRef}
+      className="courses-grid"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="courses-content">
+        <TopMenu />
+        <h2 className='CourseMainTitle'>Courses</h2>
+        <div className="NewCoursesGrid">
+            {coursesData.map((courseNew) => (
+                <Link to={`/courses/${courseNew.id}`} key={courseNew.id} className="NewCourseCard">
+                <div className='NewIsometric-Cards'>
+                    <div className='NewLayer NewLayerBottom'></div>
+                    <div className='NewLayer NewLayerMiddle'></div>
+                    <div className='NewLayer NewLayerTop'>
+                        <img src={courseNew.icon} alt={courseNew.title} className='NewCardIcon' />
+                    </div>
                 </div>
-              </div>
-
-              <div className="card-info">
-                <h3>{course.title}</h3>
-                <p>{course.desc}</p>
-              </div>
-            </Link>
-          ))}
+                <div className='NewCardInfo'>
+                    <h3>{courseNew.title}</h3>
+                    <p>{courseNew.desc}</p>
+                </div>
+                </Link>
+            ))}
         </div>
-      </main>
-    </div>
+        <Footer/>
+      </div>
+    </section>
   );
 }
+

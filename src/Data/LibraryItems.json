@@ -2,217 +2,139 @@
   {
     "id": "matrix-menu-01",
     "itemType": "component",
-    "tier": "free",
     "title": "Glitch Navbar Dropdown",
-    "categories": ["navigation"],
     "shortDescription": "Navigation header with sub-pixel hover displacement effects.",
     "coverImage": "/Thumbnails/9.webp",
-    "version": "v1.0.4",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/glitch-menu", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/glitch-menu",
-    "gitLink": "https://github.com/nirmata-hub/glitch-menu",
-    "features": ["React", "Framer Motion"],
-    "componentData": {
-      "techStack": ["JSX", "Framer Motion"]
-    }
+    "features": ["React", "Framer Motion"]
   },
   {
     "id": "cyber-hero-01",
     "itemType": "asset",
-    "tier": "free",
     "title": "Neon Grid Hero Header",
-    "categories": ["hero"],
     "shortDescription": "Animated grid landing hero section with glowing text effects.",
     "coverImage": "/Thumbnails/2.webp",
-    "version": "v1.2.0",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/neon-hero", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/neon-hero",
-    "gitLink": "https://github.com/nirmata-hub/neon-hero",
-    "features": ["GSAP", "React"],
-    "componentData": {
-      "techStack": ["JSX", "GSAP"]
-    }
+    "features": ["GSAP", "React"]
   },
   {
     "id": "cyber-hero-02",
     "itemType": "component",
-    "tier": "premium",
     "title": "Cyberpunk Scanline Hero",
-    "categories": ["hero"],
     "shortDescription": "High-impact landing hero with retro CRT scanline overlays.",
     "coverImage": "/Thumbnails/3.webp",
-    "version": "v1.1.0",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/scanline-hero", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/scanline-hero",
-    "gitLink": "https://github.com/nirmata-hub/scanline-hero",
-    "features": ["Pure CSS", "Responsive"],
-    "componentData": {
-      "techStack": ["Pure CSS"]
-    }
+    "features": ["Pure CSS", "Responsive"]
   },
   {
     "id": "glass-card-01",
     "itemType": "asset",
-    "tier": "free",
     "title": "Cyber Glassmorphism Card",
-    "categories": ["card"],
     "shortDescription": "Lightweight CSS glassmorphism display card with mouse-tracking border glow.",
     "coverImage": "/Thumbnails/4.webp",
-    "version": "v2.0.1",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/glass-card", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/glass-card",
-    "gitLink": "https://github.com/nirmata-hub/glass-card",
-    "features": ["Pure CSS", "Zero Dependencies"],
-    "componentData": {
-      "techStack": ["Pure CSS"]
-    }
+    "features": ["Pure CSS", "Zero Dependencies"]
   },
   {
     "id": "hologram-card-02",
     "itemType": "component",
-    "tier": "premium",
     "title": "Holographic Data Display Card",
-    "categories": ["card"],
     "shortDescription": "Interactive tilt-card component with holographic sheen animations.",
     "coverImage": "/Thumbnails/5.webp",
-    "version": "v1.0.0",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/holo-card", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/holo-card",
-    "gitLink": "https://github.com/nirmata-hub/holo-card",
-    "features": ["React", "Framer Motion"],
-    "componentData": {
-      "techStack": ["JSX", "Framer Motion"]
-    }
+    "features": ["React", "Framer Motion"]
   },
   {
     "id": "neon-carousel-01",
     "itemType": "asset",
-    "tier": "premium",
     "title": "Cyberpunk Infinite Slider",
-    "categories": ["carousel"],
     "shortDescription": "Smooth continuous marquee slider for showcasing featured projects.",
     "coverImage": "/Thumbnails/6.webp",
-    "version": "v1.3.0",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/neon-slider", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/neon-slider",
-    "gitLink": "https://github.com/nirmata-hub/neon-slider",
-    "features": ["GSAP", "React"],
-    "componentData": {
-      "techStack": ["JSX", "GSAP"]
-    }
+    "features": ["GSAP", "React"]
   },
   {
     "id": "cyber-button-01",
     "itemType": "component",
-    "tier": "free",
     "title": "Neon Particle Action Button",
-    "categories": ["interactive"],
     "shortDescription": "Interactive call-to-action button triggering neon particle bursts on click.",
     "coverImage": "/Thumbnails/7.webp",
-    "version": "v1.0.0",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/neon-button", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/neon-button",
-    "gitLink": "https://github.com/nirmata-hub/neon-button",
-    "features": ["GSAP", "React"],
-    "componentData": {
-      "techStack": ["JSX", "GSAP"]
-    }
+    "features": ["GSAP", "React"]
   },
   {
     "id": "cyber-footer-01",
     "itemType": "asset",
-    "tier": "free",
     "title": "Terminal Footer Block",
-    "categories": ["footer"],
     "shortDescription": "Retro-futuristic command terminal footer layout.",
     "coverImage": "/Thumbnails/8.webp",
-    "version": "v1.0.1",
-    "youtubeId": "6EA-MIYY1bg",
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub/terminal-footer", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
     "npmCommand": "npm i @nirmata-hub/terminal-footer",
-    "gitLink": "https://github.com/nirmata-hub/terminal-footer",
-    "features": ["Pure CSS"],
-    "componentData": {
-      "techStack": ["Pure CSS"]
-    }
+    "features": ["Pure CSS"]
   },
   {
     "id": "asset-security-icons-01",
     "itemType": "component",
-    "tier": "free",
     "title": "Dark Neon Security Icon Pack",
-    "categories": ["icons"],
     "shortDescription": "18 high-resolution security and encryption icons rendered with ComfyUI.",
     "coverImage": "/Thumbnails/1.webp",
-    "version": "v1.0.0",
-    "assetData": {
-      "renderType": "3D Icon Pack",
-      "fileFormats": ["PNG", "WEBP"],
-      "resolution": "2048x2048",
-      "downloadUrl": "/downloads/security-icons.zip"
-    }
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
+    "features": ["3D Icon Pack", "PNG", "WEBP", "2048x2048"]
   },
   {
     "id": "asset-ecommerce-icons-02",
     "itemType": "asset",
-    "tier": "premium",
     "title": "Cyber E-Commerce Icon Set",
-    "categories": ["icons"],
     "shortDescription": "Comprehensive pack of neon shopping, checkout, and card icons.",
     "coverImage": "/Thumbnails/10.webp",
-    "version": "v1.0.0",
-    "assetData": {
-      "renderType": "3D Icon Pack",
-      "fileFormats": ["PNG", "SVG"],
-      "resolution": "2048x2048",
-      "downloadUrl": "/downloads/ecommerce-icons.zip"
-    }
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
+    "features": ["3D Icon Pack", "PNG", "SVG", "2048x2048"]
   },
   {
     "id": "asset-hero-element-01",
     "itemType": "component",
-    "tier": "premium",
     "title": "Cyan Glowing Vault Asset",
-    "categories": ["hero-assets"],
     "shortDescription": "Isolated high-resolution hero section centerpiece asset with transparent background.",
     "coverImage": "/Thumbnails/11.webp",
-    "version": "v1.0.0",
-    "assetData": {
-      "renderType": "3D Hero Element",
-      "fileFormats": ["PNG", "WEBP"],
-      "resolution": "4096x4096",
-      "downloadUrl": "/downloads/vault-element.zip"
-    }
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
+    "features": ["3D Hero Element", "PNG", "WEBP", "4096x4096"]
   },
   {
     "id": "asset-ui-badge-01",
     "itemType": "asset",
-    "tier": "free",
     "title": "Neon Rank & Achievement Badges",
-    "categories": ["badges"],
     "shortDescription": "Vector-ready glowing rank badges for gaming and dashboard web apps.",
     "coverImage": "/Thumbnails/12.webp",
-    "version": "v1.0.0",
-    "assetData": {
-      "renderType": "UI Badge",
-      "fileFormats": ["SVG", "PNG"],
-      "resolution": "1024x1024",
-      "downloadUrl": "/downloads/rank-badges.zip"
-    }
-    
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
+    "features": ["UI Badge", "SVG", "PNG", "1024x1024"]
   },
   {
     "id": "asset-ui-badge-1",
     "itemType": "component",
-    "tier": "free",
     "title": "Neon Rank & Achievement Badges",
-    "categories": ["badges"],
     "shortDescription": "Vector-ready glowing rank badges for gaming and dashboard web apps.",
     "coverImage": "/Thumbnails/12.webp",
-    "version": "v1.0.0",
-    "assetData": {
-      "renderType": "UI Badge",
-      "fileFormats": ["SVG", "PNG"],
-      "resolution": "1024x1024",
-      "downloadUrl": "/downloads/rank-badges.zip"
-    }}
+    "videoUrl": "https://www.youtube.com/shorts/ZXgM0Hfk8qs",
+    "socialLinks": { "git": "https://github.com/nirmata-hub", "instagram": "https://www.instagram.com/", "youtube": "https://www.youtube.com/shorts/ZXgM0Hfk8qs" },
+    "features": ["UI Badge", "SVG", "PNG", "1024x1024"]
+  }
 ]

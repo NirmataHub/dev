@@ -1,35 +1,99 @@
-.courses-page {
+.courses-grid {
+  --mx: -9999px;
+  --my: -9999px;
+  
+  /* Add default values for spotlight styles */
+  --spot-hsl: 210 100% 60%; /* HSL color without hsl() wrapper */
+  --spot-alpha: 0.5;
+  --spot-fade: 250px;
+
+  position: relative;
   min-height: 100vh;
+  width: 100%;
   background-color: #05061E;
-  color: #fff;
+  overflow: hidden;
+  overflow-y: visible;
 }
 
-.courses-container {
-  width: 90%;
+/* Normal grid */
+.courses-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Cursor glow */
+.courses-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(
+      to right,
+      hsl(var(--spot-hsl) / var(--spot-alpha)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      hsl(var(--spot-hsl) / var(--spot-alpha)) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px;
+
+  /* Removed background-attachment: fixed to prevent grid misalignment */
+
+  mask-image: radial-gradient(
+    circle var(--spot-fade)
+    at var(--mx) var(--my),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--spot-fade)
+    at var(--mx) var(--my),
+    black 0%,
+    transparent 100%
+  );
+
+  z-index: 1;
+}
+
+  /* ==================================================
+    Start the Grid Section
+    =================================================== */
+
+.courses-content {
+  position: relative;
+  z-index: 2;
+}
+
+.NewCoursesGrid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  width: 80%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 60px 20px;
-}
 
-.courses-heading {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 50px;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
-
-/* Grid Layout */
-.courses-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 40px;
-}
-
-.course-card-wrapper {
-  background: rgba(10, 18, 30, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.NewCourseCard{
+  background: #060722;
+  border: 1px solid rgba(0, 255, 255, 0.168);
   border-radius: 16px;
   padding: 40px 20px;
   text-decoration: none;
@@ -38,20 +102,15 @@
   flex-direction: column;
   align-items: center;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  perspective: 1000px; /* Essential for 3D depth */
+  perspective: 1000px;
 }
-
-.course-card-wrapper:hover {
+.NewCourseCard:hover{
   border-color: rgba(0, 240, 255, 0.4);
   box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
   scale: 1.1;
-
 }
 
-/* ----------------------------------
-   FLAT DEFAULT STATE
----------------------------------- */
-.isometric-card {
+.NewIsometric-Cards{
   position: relative;
   width: 110px;
   height: 110px;
@@ -61,9 +120,7 @@
   transform: rotateX(0deg) rotateZ(0deg) scale(1);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-
-/* Base style for all 3 layers */
-.layer {
+.NewLayer{
   position: absolute;
   inset: 0;
   border-radius: 20px;
@@ -73,90 +130,88 @@
               box-shadow 0.4s ease, 
               background-color 0.4s ease;
 }
-
-/* Layer 1 (Bottom) */
-.layer-bottom {
-  background: rgba(0, 240, 255, 0.05);
-  transform: translateZ(0px);
-  opacity: 0;
-}
-
-/* Layer 2 (Middle) */
-.layer-middle {
+.NewLayerBottom{
   background: rgba(0, 240, 255, 0.15);
   transform: translateZ(0px);
   opacity: 0;
 }
+.NewLayerMiddle{
+  background: #8a5cf678;
+  transform: translateZ(0px);
+  opacity: 0;
+}
 
-/* Layer 3 (Top - Contains Icon) */
-.layer-top {
-  background: #161a23;
-  border-color: rgba(0, 240, 255, 0.4);
+.NewLayerTop{
+  background: #05061E;
+  border-color:  rgba(0, 240, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   transform: translateZ(0px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
-
-.card-icon {
+.NewCardIcon{
   width: 44px;
   height: 44px;
   transform: rotateZ(0deg);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+.NewCourseCard:hover  .NewIsometric-Cards{
+    transform: rotateX(60deg) rotateZ(-45deg) translateY(-10px) scale(1.1);
 
-/* ----------------------------------
-   3D ISOMETRIC HOVER STATE
----------------------------------- */
-/* 1. Tilt the container into 3D isometric perspective */
-.course-card-wrapper:hover .isometric-card {
-  transform: rotateX(60deg) rotateZ(-45deg) translateY(-10px) scale(1.1);
 }
 
-/* 2. Expand Layer 1 (Bottom) */
-.course-card-wrapper:hover .layer-bottom {
+.NewCourseCard:hover  .NewLayerBottom {
   opacity: 1;
   transform: translateZ(0px);
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+
 }
 
-/* 3. Expand Layer 2 (Middle) */
-.course-card-wrapper:hover .layer-middle {
+.NewCourseCard:hover  .NewLayerMiddle {
   opacity: 1;
   transform: translateZ(20px);
-  border-color: rgba(0, 240, 255, 0.7);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 15px rgba(105, 4, 123, 0.2);
 }
 
-/* 4. Expand Layer 3 (Top) & rotate icon back upright relative to the tilt */
-.course-card-wrapper:hover .layer-top {
+.NewCourseCard:hover  .NewLayerTop {
   transform: translateZ(40px);
   background: #1a202c;
   border-color: #00f0ff;
+  border-radius: 20px;
   box-shadow: 0 10px 25px rgba(0, 240, 255, 0.5);
 }
-
-.course-card-wrapper:hover .card-icon {
-  transform: rotateZ(45deg);
+.NewCourseCard:hover .NewCardIcon{
+    transform: rotateZ(45deg);
 }
-
-/* Info Section */
-.card-info {
-  text-align: center;
+@font-face {
+  font-family: 'CustomeFont';
+  src: url('./../Assets/roar-guroes.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
-
-.card-info h3 {
+.CourseMainTitle{
+    margin-top: 10px;
+    font-family: 'CustomeFont', sans-serif;
+    font-size: clamp(2.5rem, 4.5cqw, 4rem);
+}
+.NewCardInfo{
+    text-align: center;
+}
+.NewCardInfo h3{
   margin: 0 0 8px 0;
   font-size: 1.25rem;
   color: #fff;
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
 }
-
-.card-info p {
+.NewCardInfo p{
   margin: 0;
   font-size: 0.9rem;
   color: #888;
-  line-height: 1.4;
+  line-height: 1.4; 
 }
 
 
@@ -208,373 +263,4 @@
   background: rgba(0, 240, 255, 0.1);
   border-color: #00f0ff;
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
-}
-
-/* ==========================================================================
-   COURSE VIEWER & MAIN WORKSPACE
-   ========================================================================== */
-
-.course-viewer-layout {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  background-color: #0a0b0e;
-  color: #fff;
-  font-family: system-ui, -apple-system, sans-serif;
-  overflow: hidden;
-}
-
-/* Sidebar Wrapper & Desktop Layout */
-.sidebar-wrapper {
-  width: 300px;
-  min-width: 300px;
-  height: 100vh;
-  background-color: #111319;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  z-index: 100;
-}
-
-.course-sidebar {
-  width: 100%;
-  height: 100%;
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  box-sizing: border-box;
-}
-
-/* Brand Header */
-.sidebar-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #00f0ff;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.2rem;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.brand-icon {
-  width: 24px;
-  height: 24px;
-  stroke: #00f0ff;
-}
-
-.sidebar-course-header .back-link {
-  color: #00f0ff;
-  font-size: 0.85rem;
-  text-decoration: none;
-  display: inline-block;
-  margin-bottom: 6px;
-}
-
-.sidebar-course-header h2 {
-  font-size: 1.3rem;
-  margin: 0;
-  color: #fff;
-}
-
-/* Navigation Lists */
-.sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  overflow: hidden;
-}
-
-.sidebar-label {
-  font-size: 0.75rem;
-  letter-spacing: 1.5px;
-  color: #666;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.lessons-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  overflow-y: auto;
-  padding-right: 6px;
-}
-
-.lesson-group-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #e2e8f0;
-  margin-bottom: 8px;
-}
-
-.sublessons-list {
-  list-style: none;
-  padding-left: 12px;
-  margin: 0;
-  border-left: 1px solid rgba(0, 240, 255, 0.2);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.sublesson-btn {
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border: none;
-  color: #8a94a6;
-  padding: 6px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.sublesson-btn.active {
-  color: #00f0ff;
-  background: rgba(0, 240, 255, 0.12);
-  font-weight: 600;
-  box-shadow: inset 2px 0 0 #00f0ff;
-}
-
-/* ==========================================================================
-   WORKSPACE PANE (DESKTOP)
-   ========================================================================== */
-
-.course-content-pane {
-  flex: 1;
-  height: 100vh;
-  overflow-y: auto;
-  padding: 2rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-}
-
-.workspace-container {
-  width: 90%;
-  max-width: 1400px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  min-height: min-content;
-}
-
-/* Mobile Header Controls (Hidden on Desktop) */
-.mobile-header-bar {
-  display: none;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.menu-toggle-btn {
-  background: #111319;
-  border: 1px solid rgba(0, 240, 255, 0.3);
-  color: #00f0ff;
-  padding: 0.6rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.mobile-tab-group {
-  display: flex;
-  gap: 0.5rem;
-  flex: 1;
-}
-
-.tab-btn {
-  flex: 1;
-  padding: 0.6rem;
-  background: #111319;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #8a94a6;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.tab-btn.active {
-  color: #00f0ff;
-  border-color: #00f0ff;
-  background: rgba(0, 240, 255, 0.12);
-}
-
-/* Top Split Layout: Media Box + Code Editor */
-.top-workspace-section {
-  display: flex;
-  gap: 1.5rem;
-  max-height: 420px;
-  min-height: 320px;
-  align-items: stretch;
-}
-
-/* Area 1: Media Player Box fixed aspect ratio */
-.media-container {
-  height: 100%;
-  max-height: 420px;
-  aspect-ratio: 9 / 16;
-  background: #111319;
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-
-.shorts-placeholder {
-  color: #00f0ff;
-  font-size: 0.85rem;
-}
-
-/* Area 2: Monaco Editor Container */
-.monaco-placeholder {
-  flex: 1;
-  height: 100%;
-  max-height: 420px;
-  background: #161922;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.editor-header {
-  background: #111319;
-  padding: 0.75rem 1rem;
-  font-size: 0.85rem;
-  color: #8a94a6;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  display: flex;
-  justify-content: space-between;
-}
-
-.badge {
-  font-size: 0.7rem;
-  background: rgba(0, 240, 255, 0.1);
-  color: #00f0ff;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.editor-body {
-  padding: 1.25rem;
-  font-family: monospace;
-  color: #00f0ff;
-  flex: 1;
-}
-
-/* Area 3: Expandable Scrollable Content Area */
-.content-scroll-section {
-  flex: 1;
-  min-height: 250px;
-  background: #111319;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 2rem;
-  line-height: 1.7;
-  box-sizing: border-box;
-}
-
-.content-scroll-section h1 {
-  color: #00f0ff;
-  margin-top: 0;
-  font-size: 1.75rem;
-}
-
-.code-tag {
-  display: inline-block;
-  background: rgba(0, 240, 255, 0.1);
-  color: #00f0ff;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-family: monospace;
-  font-size: 0.85rem;
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-
-/* ==========================================================================
-   MOBILE BREAKPOINT (< 960px)
-   ========================================================================== */
-
-@media (max-width: 960px) {
-  .course-viewer-layout {
-    position: relative;
-    overflow-x: hidden;
-  }
-
-  /* Off-canvas sidebar drawer */
-  .sidebar-wrapper {
-    position: fixed;
-    top: 0;
-    left: -320px;
-    width: 280px;
-    min-width: 280px;
-    transition: transform 0.3s ease;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
-  }
-
-  .sidebar-wrapper.mobile-open {
-    transform: translateX(320px);
-  }
-
-  .sidebar-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 90;
-  }
-
-  .course-content-pane {
-    padding: 1rem;
-  }
-
-  .workspace-container {
-    width: 100%;
-  }
-
-  .mobile-header-bar {
-    display: flex;
-  }
-
-  /* Responsive Display Rules */
-  .top-workspace-section {
-    max-height: none;
-    min-height: 0;
-    height: auto;
-  }
-
-  /* Media Tab Active */
-  .top-workspace-section.show-content-mobile .monaco-placeholder {
-    display: none;
-  }
-
-  .top-workspace-section.show-content-mobile .media-container {
-    width: 100%;
-    height: 380px;
-    max-height: 380px;
-  }
-
-  /* Editor Tab Active */
-  .top-workspace-section.show-editor-mobile .media-container {
-    display: none;
-  }
-
-  .top-workspace-section.show-editor-mobile .monaco-placeholder {
-    display: flex;
-    width: 100%;
-    height: 420px;
-  }
-
-  .content-scroll-section.hide-mobile {
-    display: none;
-  }
 }

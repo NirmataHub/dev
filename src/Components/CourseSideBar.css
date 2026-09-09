@@ -1,0 +1,512 @@
+/* Sidebar design tokens — change these to retheme the component. */
+:root {
+  --sidebar-bg: #05061e;
+  --sidebar-surface: #080a28;
+  --sidebar-text: #e2e8f0;
+  --sidebar-text-muted: #8a94a6;
+  --sidebar-accent: #00f0ff;
+  --sidebar-accent-rgb: 0, 240, 255;
+  --sidebar-border: rgba(0, 240, 255, 0.16);
+  --sidebar-font: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  --sidebar-heading-font: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+}
+
+/* Sidebar Wrapper & Desktop Layout */
+.sidebar-wrapper {
+  width: 300px;
+  min-width: 300px;
+  height: 100vh;
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  z-index: 100;
+  flex-shrink: 0;
+  transition: width 0.25s ease, min-width 0.25s ease;
+}
+
+.sidebar-wrapper.is-collapsed {
+  width: 76px;
+  min-width: 76px;
+}
+
+.course-sidebar {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  font-family: var(--sidebar-font);
+}
+
+/* Brand Header */
+.sidebar-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--sidebar-border);
+}
+
+.sidebar-collapse-btn {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 32px;
+  padding: 0;
+  color: var(--sidebar-text-muted);
+  background: transparent;
+  border: 1px solid var(--sidebar-border);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.sidebar-collapse-btn:hover,
+.sidebar-collapse-btn:focus-visible {
+  color: var(--sidebar-accent);
+  border-color: var(--sidebar-accent);
+  outline: none;
+}
+
+.sidebar-collapse-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--sidebar-accent);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.brand-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--sidebar-accent);
+}
+
+.sidebar-all-courses {
+  color: var(--sidebar-accent);
+  font-size: 0.85rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-top: 14px;
+  border-top: 1px solid var(--sidebar-border);
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-all-courses:hover,
+.sidebar-all-courses:focus-visible {
+  opacity: 1;
+  outline: none;
+}
+
+.sidebar-course-header h2 {
+  font-size: 1.3rem;
+  margin: 0;
+  color: var(--sidebar-text);
+  font-family: var(--sidebar-heading-font);
+}
+
+/* Navigation Lists */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar-label {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.lessons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  padding-right: 6px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.lessons-list::-webkit-scrollbar {
+  display: none;
+}
+
+.lesson-group-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--sidebar-text);
+  margin-bottom: 8px;
+}
+
+.sublessons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.sublessons-list::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  bottom: 11px;
+  left: 10px;
+  width: 2px;
+  background: rgba(var(--sidebar-accent-rgb), 0.2);
+}
+
+.sublesson-btn {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  color: var(--sidebar-text-muted);
+  padding: 7px 10px 7px 28px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  position: relative;
+  line-height: 1.35;
+  transform-origin: left center;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.sublesson-btn:hover,
+.sublesson-btn:focus-visible {
+  color: rgba(var(--sidebar-accent-rgb), 0.72);
+  background: rgba(var(--sidebar-accent-rgb), 0.05);
+  transform: scale(1.015);
+  outline: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  transform: translateY(-50%);
+  border: 2px solid #657083;
+  border-radius: 50%;
+  background: var(--sidebar-bg);
+  z-index: 1;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+/* Each completed step paints the connector through to the next step. */
+.timeline-item.is-complete:not(.is-active)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 9px;
+  width: 2px;
+  height: 100%;
+  background: var(--sidebar-accent);
+  box-shadow: 0 0 6px rgba(var(--sidebar-accent-rgb), 0.45);
+}
+
+.timeline-item.is-complete .timeline-dot {
+  border-color: var(--sidebar-accent);
+  background: var(--sidebar-accent);
+  box-shadow: 0 0 8px rgba(var(--sidebar-accent-rgb), 0.65);
+}
+
+.timeline-item.is-active .timeline-dot {
+  width: 14px;
+  height: 14px;
+  left: 3px;
+  background: var(--sidebar-bg);
+  box-shadow: 0 0 0 3px rgba(var(--sidebar-accent-rgb), 0.15), 0 0 10px rgba(var(--sidebar-accent-rgb), 0.8);
+}
+
+.timeline-step-label {
+  display: none;
+}
+
+.sublesson-btn.active {
+  color: var(--sidebar-accent);
+  background: rgba(var(--sidebar-accent-rgb), 0.12);
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--sidebar-accent);
+}
+
+/* Compact desktop rail: controls, icon, and lesson progress only. */
+.course-sidebar.is-collapsed {
+  padding: 20px 12px;
+  align-items: center;
+}
+
+.course-sidebar.is-collapsed .sidebar-topbar {
+  width: 100%;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.course-sidebar.is-collapsed .sidebar-brand span,
+.course-sidebar.is-collapsed .sidebar-course-header,
+.course-sidebar.is-collapsed .sidebar-label,
+.course-sidebar.is-collapsed .lesson-group-title,
+.course-sidebar.is-collapsed .sublesson-title,
+.course-sidebar.is-collapsed .sidebar-all-courses {
+  display: none;
+}
+
+.course-sidebar.is-collapsed .sidebar-nav,
+.course-sidebar.is-collapsed .lessons-list,
+.course-sidebar.is-collapsed .lesson-group,
+.course-sidebar.is-collapsed .sublessons-list {
+  width: 100%;
+}
+
+.course-sidebar.is-collapsed .lessons-list {
+  align-items: center;
+  gap: 8px;
+  padding-right: 0;
+}
+
+.course-sidebar.is-collapsed .sublessons-list::before {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.course-sidebar.is-collapsed .sublesson-btn {
+  display: grid;
+  place-items: center;
+  min-height: 30px;
+  padding: 6px;
+}
+
+.course-sidebar.is-collapsed .timeline-dot,
+.course-sidebar.is-collapsed .timeline-item.is-active .timeline-dot {
+  position: static;
+  transform: none;
+}
+
+.course-sidebar.is-collapsed .timeline-item.is-active .timeline-dot {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  color: #001417;
+  background: #00f0ff;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15), 0 0 10px rgba(0, 240, 255, 0.8);
+}
+
+.course-sidebar.is-collapsed .timeline-step-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.course-sidebar.is-collapsed .timeline-item.is-complete:not(.is-active)::after {
+  left: calc(50% - 1px);
+}
+
+@media (max-width: 768px) {
+  /* The mobile timeline identifies only the current lesson. */
+  .timeline-item.is-active .timeline-dot {
+    width: 28px;
+    height: 28px;
+    left: -4px;
+    display: grid;
+    place-items: center;
+    color: #001417;
+    background: #00f0ff;
+    box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.15), 0 0 10px rgba(0, 240, 255, 0.8);
+  }
+
+  .timeline-item.is-active .timeline-step-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .sidebar-wrapper.is-collapsed {
+    width: 300px;
+    min-width: 300px;
+  }
+
+  .sidebar-wrapper.is-collapsed .course-sidebar {
+    padding: 20px;
+    align-items: stretch;
+  }
+
+  .sidebar-wrapper.is-collapsed .sidebar-topbar {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .sidebar-wrapper.is-collapsed .sidebar-brand span,
+  .sidebar-wrapper.is-collapsed .sidebar-course-header,
+  .sidebar-wrapper.is-collapsed .sidebar-label,
+  .sidebar-wrapper.is-collapsed .lesson-group-title,
+  .sidebar-wrapper.is-collapsed .sublesson-title,
+  .sidebar-wrapper.is-collapsed .sidebar-all-courses {
+    display: initial;
+  }
+
+  .sidebar-wrapper.is-collapsed .sidebar-nav,
+  .sidebar-wrapper.is-collapsed .lessons-list,
+  .sidebar-wrapper.is-collapsed .lesson-group,
+  .sidebar-wrapper.is-collapsed .sublessons-list {
+    width: auto;
+  }
+
+  .sidebar-wrapper.is-collapsed .lessons-list {
+    align-items: stretch;
+    gap: 18px;
+    padding-right: 6px;
+  }
+
+  .sidebar-wrapper.is-collapsed .sublessons-list::before {
+    left: 10px;
+    transform: none;
+  }
+
+  .sidebar-wrapper.is-collapsed .sublesson-btn {
+    display: block;
+    min-height: 0;
+    padding: 7px 10px 7px 28px;
+  }
+
+  .sidebar-wrapper.is-collapsed .timeline-dot,
+  .sidebar-wrapper.is-collapsed .timeline-item.is-active .timeline-dot {
+    position: absolute;
+    transform: translateY(-50%);
+  }
+
+  .sidebar-wrapper.is-collapsed .timeline-item.is-complete:not(.is-active)::after {
+    left: 9px;
+  }
+}
+
+/* The drawer belongs to the sidebar, so its responsive layout lives here too. */
+@media (max-width: 768px) {
+  .sidebar-wrapper.mobile-expanded {
+    width: 300px;
+    min-width: 300px;
+    left: 0;
+  }
+
+  .sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100vh;
+    z-index: 100;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar-wrapper.mobile-open {
+    left: 0;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+  }
+}
+
+/* Mobile keeps the compact rail visible; it no longer opens as a drawer. */
+@media (max-width: 768px) {
+  .sidebar-wrapper.is-collapsed {
+    width: 76px;
+    min-width: 76px;
+    left: 0;
+  }
+
+  .sidebar-wrapper.is-collapsed .course-sidebar {
+    padding: 20px 12px;
+    align-items: center;
+  }
+
+  .sidebar-wrapper.is-collapsed .sidebar-topbar {
+    width: 100%;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sidebar-wrapper.is-collapsed .sidebar-brand span,
+  .sidebar-wrapper.is-collapsed .sidebar-course-header,
+  .sidebar-wrapper.is-collapsed .sidebar-label,
+  .sidebar-wrapper.is-collapsed .lesson-group-title,
+  .sidebar-wrapper.is-collapsed .sublesson-title,
+  .sidebar-wrapper.is-collapsed .sidebar-all-courses {
+    display: none;
+  }
+
+  .sidebar-wrapper.is-collapsed .sidebar-nav,
+  .sidebar-wrapper.is-collapsed .lessons-list,
+  .sidebar-wrapper.is-collapsed .lesson-group,
+  .sidebar-wrapper.is-collapsed .sublessons-list {
+    width: 100%;
+  }
+
+  .sidebar-wrapper.is-collapsed .lessons-list {
+    align-items: center;
+    gap: 8px;
+    padding-right: 0;
+  }
+
+  .sidebar-wrapper.is-collapsed .sublessons-list::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sidebar-wrapper.is-collapsed .sublesson-btn {
+    display: grid;
+    place-items: center;
+    min-height: 30px;
+    padding: 6px;
+  }
+
+  .sidebar-wrapper.is-collapsed .timeline-dot,
+  .sidebar-wrapper.is-collapsed .timeline-item.is-active .timeline-dot {
+    position: static;
+    transform: none;
+  }
+
+  .sidebar-wrapper.is-collapsed .timeline-item.is-complete:not(.is-active)::after {
+    left: calc(50% - 1px);
+  }
+}
+

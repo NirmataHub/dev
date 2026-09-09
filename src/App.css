@@ -324,6 +324,8 @@
 .hero {
   display: flex;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   height: 45vh;
   position: relative;
   overflow: hidden;
@@ -363,7 +365,7 @@
 /* Resizing Title with forced line break for "Hub" */
 .Brand-Name {
   font-family: 'CustomFont', sans-serif;
-  font-size: clamp(2.5rem, 11.5cqw, 12rem);
+  font-size: clamp(2.5rem, 10.5cqw, 10rem);
   line-height: 1;
   width: 100%;
   height: 100%;
@@ -584,7 +586,7 @@ h2{
   color: #e2e8f0;
   font-style: normal;
   letter-spacing: 1.5px;
-  font-size: 40px;
+  font-size: 35px;
   color: rgba(0, 255, 255, 0.822);
 }
 .SellingLine {
@@ -622,8 +624,8 @@ h2{
   background: transparent;
   border: none;
   color: #8a9bb0;
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -836,6 +838,10 @@ h2{
   text-transform: uppercase;
 }
 
+.item-categories:empty {
+  display: none;
+}
+
 /* ==========================================================================
    Detail Modal Pop-up Component (Pure CSS Replacement)
    ========================================================================== */
@@ -859,15 +865,44 @@ h2{
 .modal-container {
   position: relative;
   width: 100%;
-  max-width: 1024px;
+  max-width: 900px;
   background-color: #0f172a; /* slate-900 */
-  border: 1px solid #1e293b; /* slate-800 */
   border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   max-height: 90vh;
+
+}
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.modal-container::after, .modal-container::before {
+  content: "";
+  position: absolute;
+  inset: -1px; 
+  border-radius: 26px; 
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent 0deg 120deg,  
+    cyan 120deg 180deg,       
+    transparent 180deg 300deg, 
+    cyan 300deg 360deg       
+  );
+  z-index: -1;
+  animation: 8s modal-border-spin linear infinite;
+}
+
+
+@keyframes modal-border-spin {
+  from{
+    --angle: 0deg;
+  }
+  to{
+    --angle: 360deg;
+  }
 }
 
 .modal-close-btn {
@@ -896,9 +931,13 @@ h2{
 }
 
 .modal-video-pane {
-  width: 100%;
-  background-color: #020617; /* slate-950 */
-  aspect-ratio: 16 / 9;
+  width: min(100%, 340px);
+  background-color: #020617;
+  aspect-ratio: 9 / 16;
+  border-radius: 24px 0 0 24px;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -907,7 +946,14 @@ h2{
 .modal-video-pane iframe {
   width: 100%;
   height: 100%;
-  border: 0;
+  border: none;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-video-pane img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -920,7 +966,7 @@ h2{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-top: 1px solid #1e293b;
+  min-height: 0;
 }
 
 .modal-cat-tag {
@@ -942,33 +988,86 @@ h2{
   color: #ffffff;
   margin: 12px 0 8px 0;
   letter-spacing: -0.025em;
+  text-align: left;
 }
 
 .modal-description {
   color: #94a3b8;
   font-size: 14px;
   line-height: 1.6;
-  margin: 0 0 24px 0;
+  margin: 0 0 32px 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .modal-code-box {
   background-color: rgba(2, 6, 23, 0.8);
   border: 1px solid #1e293b;
   border-radius: 12px;
-  padding: 12px;
+  padding: 10px 10px 10px 14px;
   font-family: monospace;
   font-size: 12px;
   color: #34d399; /* emerald-400 */
-  user-select: all;
   margin-bottom: 16px;
   overflow-x: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
+
+.modal-code-box code { white-space: nowrap; }
+
+.modal-code-box button,
+.download-asset-btn {
+  flex: 0 0 auto;
+  border: 1px solid #22d3ee;
+  border-radius: 7px;
+  padding: 6px 10px;
+  background: #083344;
+  color: #67e8f9;
+  font: inherit;
+  cursor: pointer;
+}
+
+.download-asset-btn {
+  display: inline-block;
+  margin-top: 4px;
+  text-decoration: none;
+}
+
+.modal-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.modal-socials {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 24px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+.modal-socials a {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #334155;
+  border-radius: 50%;
+  color: #cbd5e1;
+}
+
+.modal-socials a:hover { color: #22d3ee; border-color: #22d3ee; }
+.modal-socials svg { width: 16px; height: 16px; fill: currentColor; stroke: currentColor; stroke-width: 1.6; }
+.modal-socials .social-icon-fill { fill: currentColor; stroke: none; }
 
 .modal-features-list {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 16px;
+  margin-top: 28px;
 }
 
 .modal-feat-tag {
@@ -989,14 +1088,16 @@ h2{
     max-height: 80vh;
   }
   .modal-video-pane {
-    width: 60%;
-    aspect-ratio: auto;
+    width: 42%;
+    max-width: 340px;
+    flex: 0 0 auto;
   }
   .modal-info-pane {
-    width: 40%;
+    width: 58%;
     border-top: 0;
-    border-left: 1px solid #1e293b;
+    border-left: 0;
     padding: 32px;
+    overflow-y: auto;
   }
 }
 
